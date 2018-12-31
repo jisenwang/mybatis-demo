@@ -1,11 +1,12 @@
 package com.test.mybatis.controller;
 
-import com.test.mybatis.entity.Employee;
 import com.test.mybatis.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -23,7 +24,7 @@ public class HelloController {
 
 
     @GetMapping("/indx/{id}")
-    public Employee get(@PathVariable Integer id) {
+    public Map<String,Object> get(@PathVariable Integer id) {
         return employeeService.getEmployeeById(id);
     }
 }

@@ -11,8 +11,34 @@
         <result column="dept_id" property="deptId" />
     </resultMap>
 
-    <select id="getEmployeeById" resultType="com.test.mybatis.entity.Employee">
-		select * from employees where id = #{id}
+    <sql id="Base_Column_List" >
+      email, salary
+    </sql>
+
+
+    <insert id="addEmployee" parameterType="com.test.mybatis.entity.Employee" useGeneratedKeys="true" keyProperty="id">
+      insert into employees(last_name,email,salary,dept_id)
+		values(#{lastName},#{email},#{salary},#{deptId})
+    </insert>
+
+    <update id="updateEmployee">
+        update employees set last_name = #{lastName},email=#{email},salary=#{salary},dept_id=#{deptId}
+		where id = #{id}
+
+    </update>
+    <delete id="deleteEmployee">
+        delete from employees where id = #{a}
+    </delete>
+
+    <select id="getEmployeeById" resultMap="BaseResultMap">
+		select
+		 <include refid="Base_Column_List"/>
+		 from employees where id = #{id}
 	</select>
+
+
+    <select id="getEmployees" resultMap="BaseResultMap">
+        select * from employees
+    </select>
 
 </mapper>

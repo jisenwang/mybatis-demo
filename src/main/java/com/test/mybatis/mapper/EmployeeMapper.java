@@ -1,7 +1,8 @@
 package com.test.mybatis.mapper;
 
 import com.test.mybatis.entity.Employee;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,8 +12,15 @@ import org.springframework.stereotype.Repository;
  * @author Wangchenghong
  * @Date 2018/12/21
  */
-@Repository
 public interface EmployeeMapper {
 
     public Employee getEmployeeById(Integer id);
+
+    List<Employee> getEmployees();
+
+    Boolean addEmployee(Employee employee);
+
+    Boolean updateEmployee(Employee employee);
+
+    Boolean deleteEmployee(Employee employee);
 }

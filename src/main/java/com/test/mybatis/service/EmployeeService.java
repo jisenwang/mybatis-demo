@@ -1,6 +1,6 @@
 package com.test.mybatis.service;
 
-import com.test.mybatis.entity.Employee;
+import java.util.Map;
 
 /**
  * <p>
@@ -12,5 +12,5 @@ import com.test.mybatis.entity.Employee;
  */
 public interface EmployeeService {
 
-    Employee getEmployeeById(Integer id);
+    Map<String,Object> getEmployeeById(Integer id);
 }

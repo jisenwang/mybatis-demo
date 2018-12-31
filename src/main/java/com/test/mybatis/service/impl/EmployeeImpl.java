@@ -7,6 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *
@@ -23,8 +27,15 @@ public class EmployeeImpl implements EmployeeService {
     private EmployeeMapper employeeMapper;
 
     @Override
-    public Employee getEmployeeById(Integer id) {
-        return employeeMapper.getEmployeeById(id);
+    public Map<String,Object> getEmployeeById(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+
+        List<Employee> employees = employeeMapper.getEmployees();
+        map.put("list", employees);
+
+        Employee employeeById = employeeMapper.getEmployeeById(id);
+        map.put("one", employeeById);
+        return map;
     }
 
 
